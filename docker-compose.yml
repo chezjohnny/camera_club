@@ -1,0 +1,10 @@
+camera:
+    build: .
+    ports:
+       - "81:8000"
+#nginx:
+#    build: nginx
+#    ports:
+#        - "80:80"
+#    links:
+#        - johntone

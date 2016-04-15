@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta name="description" content="Camera Club Web Site" />
+		<meta name="keywords" content="jazz,music,swiss,valais,saxophone,drums,double bass,creative common,JonTone Trio, JonToneTrio, JohnToneTrio, JohnTone Trio, John Tone Trio, Jon Tone Trio" />
+		<meta name="Author" content="Johnny Mariéthoz">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+        {% assets "css_all" %}
+        <link rel="stylesheet" type="text/css" href="{{ ASSET_URL }}" media="all" />                  <!-- KICKSTART -->
+        {% endassets %}
+
+		</head>
+		<body>
+		  <nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">Camera Club</a>
+	        </div>
+	        <div id="navbar" class="collapse navbar-collapse">
+            {% set navigation_bar = [
+			    (url_for("index"), 'Welcome'),
+				(url_for("news"), 'News'),
+            ] -%}
+            {% set active_page = active_page|default('index') -%}
+	          <ul class="nav navbar-nav">
+		        {% for href, id in navigation_bar %}
+	                <li{% if id == active_page %} class="actove"{% endif %}><a href="{{ href|e }}" title="{{ id }}">{{ id.capitalize() }}</a></li>
+                {% endfor %}
+
+	          </ul>
+	        </div><!--/.nav-collapse -->
+	      </div>
+	    </nav>
+
+	    <div class="container">
+			{% block body %}
+			{% endblock %}	
+	    </div><!-- /.container -->
+
+        {% assets "js_all" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+        {% endassets %}
+</body></html>
