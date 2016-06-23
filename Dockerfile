@@ -43,8 +43,17 @@ COPY ./setup.py ./MANIFEST.in ./wsgi.py ./runserver.py ./
 # adjust dir permissions
 RUN chown camera:camera -R /home/camera /data
 
+RUN npm update && npm install --silent -g node-sass clean-css uglify-js requirejs
+
+ENV SASS_BIN node-sass
+
 #switch to user
 USER camera
+
+# install js
+WORKDIR ${HOME}/devel/camera_club/static
+RUN npm install
+WORKDIR ${HOME}/devel
 
 # install web server
 RUN pip install --user gunicorn eventlet & pip install --user .
