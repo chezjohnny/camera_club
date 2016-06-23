@@ -26,3 +26,6 @@ Après avoir cloner le projet git et s'être placer à la racine du projet, on p
 
 Avec un browser on peut accéder au site avec l'addresse ip de la machine cameraclub sur le port 81. Pour obtenir l'adresse ip `docker-machine ip cameraclub`, par ex. 192.168.64.10, on accèdera donc à la page à l'adresse: http://192.168.64.10:81 .
 
+## Technologies
+
+Ce site est basé sur `python-flask` avec un framework HTML5 `twitter-bootstap`. Les javascripts utilisent `sass` et le css `scss`. Le contenu est entré en Markdown grâce au module `Flask-Markdown`.
