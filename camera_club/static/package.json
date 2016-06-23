@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "almond": "^0.3.2",
+    "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
     "font-awesome": "^4.6.1",
     "jquery": "^2.2.3"

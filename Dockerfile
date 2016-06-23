@@ -3,7 +3,17 @@ FROM python:2.7-slim
 MAINTAINER Johnny Mariéthoz <chezjohnny@gmail.com>
 
 #needed by some python modules
-RUN apt-get update -y && apt-get install -y gcc curl
+#RUN apt-get update -y && apt-get install -y gcc curl
+
+# Node.js, bower, less, clean-css, uglify-js, requirejs
+RUN apt-get update
+RUN apt-get -qy upgrade --fix-missing --no-install-recommends
+RUN apt-get -qy install --fix-missing --no-install-recommends curl
+RUN curl -sL https://deb.nodesource.com/setup_iojs_2.x | bash -
+
+# Install dependencies
+RUN apt-get -qy install --fix-missing --no-install-recommends gcc git iojs curl
+
 
 # website will be in a user directory
 ENV HOME /home/camera
@@ -26,7 +36,7 @@ RUN mkdir $HOME/devel $HOME/www
 WORKDIR ${HOME}/devel
 
 # copy local files on the images
-ADD camera camera
+ADD camera_club camera_club
 COPY wsgi.py  $HOME/www/
 COPY ./setup.py ./MANIFEST.in ./wsgi.py ./runserver.py ./
 

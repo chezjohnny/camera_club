@@ -1,0 +1,2 @@
+recursive-include camera_club/templates *
+recursive-include camera_club/static *
